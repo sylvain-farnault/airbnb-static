@@ -6,11 +6,13 @@ class FlatsController < ApplicationController
   end
 
   def show
-    @flats = get_flats
+    # flats don't need to be an intance variable
+    # ==> we don't need to pass those datas to the view
+    flats = get_flats
     # params[:id]
-    @flat = @flats.select { |flat|
+    @flat = flats.find { |flat|
       flat["id"] == params[:id].to_i
-    }.first
+    }
   end
 
   private
